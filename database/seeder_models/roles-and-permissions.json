@@ -1,0 +1,33 @@
+{
+    "0": {
+        "name": "Super Admin",
+        "permissions": {
+            "0": {
+                    "name": "Administer"
+                }
+            },
+        "roles": {
+            "0": {
+                "name": "Pages Admin",
+                "permissions": {
+                    "0": {
+                        "name": "Browse Pages"
+                    },
+                    "1": {
+                        "name": "Read Page"
+                    },
+                    "2": {
+                        "name": "Edit Page"
+                    },
+                    "3": {
+                        "name": "Add Page"
+                    },
+                    "4": {
+                        "name": "Delete Page"
+                    }
+                }
+            }
+        }
+    }
+}
+
