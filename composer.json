@@ -1,0 +1,29 @@
+{
+    "name": "lucas-quinn-guru/sitetronic-page",
+    "description": "Front end blog and pages with out of the box with blog and post management backend.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lucas Quinn",
+            "email": "lucas.quinn@lucasquinn.guru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.1.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "LucasQuinnGuru\\SitetronicPage\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LucasQuinnGuru\\SitetronicPage\\SitetronicPageServiceProvider"
+            ]
+        }
+    }
+}
