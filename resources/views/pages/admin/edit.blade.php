@@ -1,6 +1,6 @@
 @extends('layouts.default.master')
 
-@section('titlePage', 'Edit Post')
+@section('title', 'Edit Page')
 
 @section('content')
 <div class="container">
@@ -8,15 +8,15 @@
 
         <div class="col-md-8 col-md-offset-2">
 
-            <h1>Edit Post</h1>
+            <h1>Edit Page</h1>
             <hr>
-                {{ Form::model($post, [ 'route' => [ 'admin.posts.update', $post->id], 'method' => 'PUT'] ) }}
+                {{ Form::model($page, [ 'route' => [ 'admin.pages.update', $page->id], 'method' => 'PUT'] ) }}
                 <div class="form-group">
                     {{ Form::label('title', 'Title') }}
                     {{ Form::text('title', null, array('class' => 'form-control')) }}<br>
 
-                    {{ Form::label('body', 'Post Body') }}
-                    {{ Form::textarea('body', null, array('class' => 'form-control', "id" => "basic-example")) }}<br>
+                    {{ Form::label('content', 'Page Content') }}
+                    {{ Form::textarea('content', null, array('class' => 'form-control', "id" => "basic-example")) }}<br>
 
                     {{ Form::submit('Save', array('class' => 'btn btn-primary')) }}
 

@@ -2,17 +2,17 @@
 
 @section('content')
     <div class="container">
-        {{ Breadcrumbs::render('sitetronic-posts-admin-index') }}
+        {{ Breadcrumbs::render('sitetronic-pages-admin-index') }}
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><h3>Posts</h3></div>
-                <div class="panel-heading">Page {{ $posts->currentPage() }} of {{ $posts->lastPage() }}</div>
-                @foreach ($posts as $post)
+                <div class="panel-heading"><h3>Pages</h3></div>
+                <div class="panel-heading">Page {{ $pages->currentPage() }} of {{ $pages->lastPage() }}</div>
+                @foreach ($pages as $page)
                     <div class="panel-body">
                         <li style="list-style-type:disc">
-                            <a href="{{ route('posts.show', $post->id ) }}"><b>{{ $post->title }}</b><br>
+                            <a href="{{ route('pages.show', $pages->id ) }}"><b>{{ $pages->title }}</b><br>
                                 <p class="teaser">
-                                    {{  str_limit($post->body, 100) }} {{-- Limit teaser to 100 characters --}}
+                                    {{  str_limit($pages->content, 100) }} {{-- Limit teaser to 100 characters --}}
                                 </p>
                             </a>
                         </li>
@@ -20,10 +20,10 @@
                 @endforeach
             </div>
             <div class="text-center">
-                {!! $posts->links() !!}
+                {!! $pages->links() !!}
             </div>
         </div>
-        <a href="{{ route('admin.posts.create') }}" class="btn btn-primary btn-lg btn-block">Add Post</a>
+        <a href="{{ route('admin.pages.create') }}" class="btn btn-primary btn-lg btn-block">Add Page</a>
 
     </div>
 @endsection
