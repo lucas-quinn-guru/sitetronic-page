@@ -4,14 +4,14 @@
 
 @section('content')
 <div class="container">
-    <h1>
+    <h2>
         <i class='fa fa-user-plus'></i> Add Page
-    </h1>
+    </h2>
     <hr>
     <div class='col-lg-12'>
 
         {{-- Using the Laravel HTML Form Collective to create our form --}}
-        {{ Form::open(array('route' => 'admin.pages.store')) }}
+        {{ Form::open(array('route' => 'pages.admin.store')) }}
 
         <div class="form-group">
             {{ Form::label('title', 'Title') }}

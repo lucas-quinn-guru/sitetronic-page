@@ -7,17 +7,28 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><h3>Pages</h3></div>
                 <div class="panel-heading">Page {{ $pages->currentPage() }} of {{ $pages->lastPage() }}</div>
-                @foreach ($pages as $page)
-                    <div class="panel-body">
-                        <li style="list-style-type:disc">
-                            <a href="{{ route('pages.show', $pages->id ) }}"><b>{{ $pages->title }}</b><br>
-                                <p class="teaser">
-                                    {{  str_limit($pages->content, 100) }} {{-- Limit teaser to 100 characters --}}
-                                </p>
-                            </a>
-                        </li>
-                    </div>
-                @endforeach
+                <div class="panel-body">
+                    <table class="table striped">
+                        <tr>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th>Controls</th>
+                        </tr>
+                    @foreach ($pages as $page)
+                        <tr>
+                            <td>
+                                <a href="{{ route('admin.pages.show', $page->id ) }}">{{ $page->title }}</a>
+                            </td>
+                            <td>
+                                {{  str_limit($page->content, 100) }} {{-- Limit teaser to 100 characters --}}
+                            </td>
+                            <td>
+                                <a href='{{ route('admin.pages.edit', $page->id ) }}'>Edit</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </table>
+                </div>
             </div>
             <div class="text-center">
                 {!! $pages->links() !!}

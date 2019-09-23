@@ -4,24 +4,23 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <h2>
+        <i class='fa fa-user-plus'></i> Edit Page
+    </h2>
+    <hr>
 
-        <div class="col-md-8 col-md-offset-2">
+    <div class='col-lg-12'>
+        {{ Form::model($page, [ 'route' => [ 'admin.pages.update', $page->id], 'method' => 'PUT'] ) }}
+        <div class="form-group">
+            {{ Form::label('title', 'Title') }}
+            {{ Form::text('title', null, array('class' => 'form-control')) }}<br>
 
-            <h1>Edit Page</h1>
-            <hr>
-                {{ Form::model($page, [ 'route' => [ 'admin.pages.update', $page->id], 'method' => 'PUT'] ) }}
-                <div class="form-group">
-                    {{ Form::label('title', 'Title') }}
-                    {{ Form::text('title', null, array('class' => 'form-control')) }}<br>
+            {{ Form::label('content', 'Page Content') }}
+            {{ Form::textarea('content', null, array('class' => 'form-control', "id" => "basic-example")) }}<br>
 
-                    {{ Form::label('content', 'Page Content') }}
-                    {{ Form::textarea('content', null, array('class' => 'form-control', "id" => "basic-example")) }}<br>
+            {{ Form::submit('Save', array('class' => 'btn btn-primary')) }}
 
-                    {{ Form::submit('Save', array('class' => 'btn btn-primary')) }}
-
-                    {{ Form::close() }}
-                </div>
+            {{ Form::close() }}
         </div>
     </div>
 </div>
