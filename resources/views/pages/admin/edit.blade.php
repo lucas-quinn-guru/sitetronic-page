@@ -2,14 +2,13 @@
 
 @section('title', 'Edit Page')
 
-@push("css_inline")
-img {
-    margin: 10px
-}
+@push('css_inline')
+
 @endpush
 
 @section('content')
 <div class="container">
+    {{ Breadcrumbs::render('sitetronic-pages-admin-edit') }}
     <h2>
         <i class='fa fa-user-plus'></i> Edit Page
     </h2>
@@ -38,6 +37,7 @@ img {
 var editor_config = {
     path_absolute : "{{env("APP_URL")}}/",
         selector: 'textarea#basic-example',
+        content_style: 'img { margin: 10px; }',
         height: 500,
         menubar: false,
         plugins: [
