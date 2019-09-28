@@ -70,9 +70,9 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $page = Page::findOrFail($id); //Find page of id = $id
+        $page = Page::where('slug', $slug)->first(); //Find page of id = $id
 
         return view ('sitetronic-page::pages.show', compact('page'));
     }

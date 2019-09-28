@@ -8,6 +8,7 @@
     {{ Breadcrumbs::render('sitetronic-pages-admin-show') }}
     <h1>{{ $page->title }}</h1>
     <hr>
+    <p class="lead">Slug: {{ $page->slug }}</p>
     <p class="lead">{{ $page->content }}</p>
     <hr>
     {!! Form::open(['method' => 'DELETE', 'route' => ['admin.pages.destroy', $page->id] ]) !!}
