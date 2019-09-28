@@ -5,6 +5,7 @@ Route::group(['middleware'=>['web'], 'namespace' => 'LucasQuinnGuru\SitetronicPa
         Route::resource('pages', 'Admin\\PageController');
     });
 
+    Route::resource( 'pages', 'PageController@index' );
     //Route::get('{page}/{subs}', [
     //    'uses' => 'PageController@subPage',
     //])->where(['page' => '^((?!login).)*$', 'subs' => '.*']);

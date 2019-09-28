@@ -2,6 +2,12 @@
 
 @section('title', 'Edit Page')
 
+@push("css_inline")
+img {
+    margin: 10px
+}
+@endpush
+
 @section('content')
 <div class="container">
     <h2>
@@ -29,34 +35,52 @@
 @endsection
 
 @push('jscript_footer')
-    tinymce.init({
+var editor_config = {
+    path_absolute : "{{env("APP_URL")}}/",
         selector: 'textarea#basic-example',
         height: 500,
         menubar: false,
         plugins: [
-            'advlist autolink lists link image charmap print preview anchor',
-            'searchreplace visualblocks code fullscreen',
-            'insertdatetime media table paste code help wordcount'
+            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars code fullscreen",
+            "insertdatetime media nonbreaking save table directionality",
+            "emoticons template paste textpattern"
         ],
-        toolbar: 'undo redo | customMediaButton | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat code | help',
+        //"advlist autolink lists link image charmap print preview hr anchor pagebreak",
+        //"searchreplace wordcount visualblocks visualchars code fullscreen",
+        //"insertdatetime media nonbreaking save table contextmenu directionality",
+        //"emoticons template paste textcolor colorpicker textpattern"
+        toolbar: 'insertfile undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat code | link image media | help',
+        relative_urls: false,
         content_css: [
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
             '//www.tiny.cloud/css/codepen.min.css'
         ],
-        valid_elements : 'stream[src|controls],a[href|target=_blank],strong/b,div[align],br',
+        valid_elements : 'stream[src|controls],img[src|alt|width|height|border|style],a[href|target=_blank],strong/b,div[align],br',
         extended_valid_elements: 'stream[src|controls]',
+        file_browser_callback : function(field_name, url, type, win) {
+            var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
+            var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
 
+            var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
+            if (type == 'image') {
+                cmsURL = cmsURL + "&type=Images";
+            } else {
+                cmsURL = cmsURL + "&type=Files";
+            }
 
-        setup: function (editor) {
-
-            editor.ui.registry.addButton('customMediaButton', {
-                text: 'My Media',
-                onAction: function (_) {
-                    editor.insertContent('^^autonettv media="2e7888be174a83438be57872906640d9"^^');
-                }
+            tinyMCE.activeEditor.windowManager.open({
+                file : cmsURL,
+                title : 'Filemanager',
+                width : x * 0.8,
+                height : y * 0.8,
+                resizable : "yes",
+                close_previous : "no"
             });
         }
-    });
+    };
+
+    tinymce.init(editor_config);
 @endpush
 
 @push("jscript_src")
