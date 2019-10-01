@@ -21,9 +21,9 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::orderby('id', 'desc')->paginate(5); //show only 5 items at a time in descending order
+        $page = Page::where('slug', 'index')->first(); //Find page of id = $id
 
-        return view('sitetronic-page::pages.index', compact('pages'));
+        return view ('sitetronic-page::pages.show', compact('page'));
     }
 
     /**
