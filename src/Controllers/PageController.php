@@ -22,7 +22,9 @@ class PageController extends Controller
     public function index()
     {
         $page = Page::where('slug', 'index')->first(); //Find page of id = $id
-
+        if( $page == null ) {
+            return view( 'welcome' );
+        }
         return view ('sitetronic-page::pages.show', compact('page'));
     }
 
