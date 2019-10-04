@@ -38,7 +38,7 @@
 @endpush
 
 @push('jscript_footer')
-    var editor_config = {
+var editor_config = {
     path_absolute : "{{env("APP_URL")}}/",
         selector: 'textarea#basic-example',
         content_style: 'img { margin: 10px; }',

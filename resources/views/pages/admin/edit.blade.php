@@ -34,7 +34,7 @@
 @endsection
 
 @push('jscript_footer')
-var editor_config = {
+    var editor_config = {
     path_absolute : "{{env("APP_URL")}}/",
         selector: 'textarea#basic-example',
         content_style: 'img { margin: 10px; }',
@@ -104,6 +104,6 @@ var editor_config = {
 @endpush
 
 @push("jscript_src")
-<script src="/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script data-cfasync="false" defer type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=2e7888be174a83438be57872906640d9"></script>
 @endpush
